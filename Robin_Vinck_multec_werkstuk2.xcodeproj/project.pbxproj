@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03235F7B209706F8000EEB7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03235F7A209706F8000EEB7E /* AppDelegate.swift */; };
+		03235F7D209706F8000EEB7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03235F7C209706F8000EEB7E /* ViewController.swift */; };
+		03235F80209706F8000EEB7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03235F7E209706F8000EEB7E /* Main.storyboard */; };
+		03235F83209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03235F81209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.xcdatamodeld */; };
+		03235F85209706FA000EEB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03235F84209706FA000EEB7E /* Assets.xcassets */; };
+		03235F88209706FA000EEB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03235F86209706FA000EEB7E /* LaunchScreen.storyboard */; };
+		03235F93209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03235F92209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests.swift */; };
+		03235F9E209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03235F9D209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		03235F8F209706FA000EEB7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03235F6F209706F8000EEB7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03235F76209706F8000EEB7E;
+			remoteInfo = Robin_Vinck_multec_werkstuk2;
+		};
+		03235F9A209706FA000EEB7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03235F6F209706F8000EEB7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03235F76209706F8000EEB7E;
+			remoteInfo = Robin_Vinck_multec_werkstuk2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03235F77209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Robin_Vinck_multec_werkstuk2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03235F7A209706F8000EEB7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		03235F7C209706F8000EEB7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		03235F7F209706F8000EEB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		03235F82209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Robin_Vinck_multec_werkstuk2.xcdatamodel; sourceTree = "<group>"; };
+		03235F84209706FA000EEB7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03235F87209706FA000EEB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		03235F89209706FA000EEB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03235F8E209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Robin_Vinck_multec_werkstuk2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03235F92209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robin_Vinck_multec_werkstuk2Tests.swift; sourceTree = "<group>"; };
+		03235F94209706FA000EEB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03235F99209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Robin_Vinck_multec_werkstuk2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03235F9D209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robin_Vinck_multec_werkstuk2UITests.swift; sourceTree = "<group>"; };
+		03235F9F209706FA000EEB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03235F74209706F8000EEB7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03235F8B209706FA000EEB7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03235F96209706FA000EEB7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03235F6E209706F8000EEB7E = {
+			isa = PBXGroup;
+			children = (
+				03235F79209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2 */,
+				03235F91209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests */,
+				03235F9C209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests */,
+				03235F78209706F8000EEB7E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		03235F78209706F8000EEB7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03235F77209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.app */,
+				03235F8E209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests.xctest */,
+				03235F99209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03235F79209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2 */ = {
+			isa = PBXGroup;
+			children = (
+				03235F7A209706F8000EEB7E /* AppDelegate.swift */,
+				03235F7C209706F8000EEB7E /* ViewController.swift */,
+				03235F7E209706F8000EEB7E /* Main.storyboard */,
+				03235F84209706FA000EEB7E /* Assets.xcassets */,
+				03235F86209706FA000EEB7E /* LaunchScreen.storyboard */,
+				03235F89209706FA000EEB7E /* Info.plist */,
+				03235F81209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.xcdatamodeld */,
+			);
+			path = Robin_Vinck_multec_werkstuk2;
+			sourceTree = "<group>";
+		};
+		03235F91209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				03235F92209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests.swift */,
+				03235F94209706FA000EEB7E /* Info.plist */,
+			);
+			path = Robin_Vinck_multec_werkstuk2Tests;
+			sourceTree = "<group>";
+		};
+		03235F9C209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				03235F9D209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests.swift */,
+				03235F9F209706FA000EEB7E /* Info.plist */,
+			);
+			path = Robin_Vinck_multec_werkstuk2UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03235F76209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03235FA2209706FA000EEB7E /* Build configuration list for PBXNativeTarget "Robin_Vinck_multec_werkstuk2" */;
+			buildPhases = (
+				03235F73209706F8000EEB7E /* Sources */,
+				03235F74209706F8000EEB7E /* Frameworks */,
+				03235F75209706F8000EEB7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Robin_Vinck_multec_werkstuk2;
+			productName = Robin_Vinck_multec_werkstuk2;
+			productReference = 03235F77209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		03235F8D209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03235FA5209706FA000EEB7E /* Build configuration list for PBXNativeTarget "Robin_Vinck_multec_werkstuk2Tests" */;
+			buildPhases = (
+				03235F8A209706FA000EEB7E /* Sources */,
+				03235F8B209706FA000EEB7E /* Frameworks */,
+				03235F8C209706FA000EEB7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03235F90209706FA000EEB7E /* PBXTargetDependency */,
+			);
+			name = Robin_Vinck_multec_werkstuk2Tests;
+			productName = Robin_Vinck_multec_werkstuk2Tests;
+			productReference = 03235F8E209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		03235F98209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03235FA8209706FA000EEB7E /* Build configuration list for PBXNativeTarget "Robin_Vinck_multec_werkstuk2UITests" */;
+			buildPhases = (
+				03235F95209706FA000EEB7E /* Sources */,
+				03235F96209706FA000EEB7E /* Frameworks */,
+				03235F97209706FA000EEB7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03235F9B209706FA000EEB7E /* PBXTargetDependency */,
+			);
+			name = Robin_Vinck_multec_werkstuk2UITests;
+			productName = Robin_Vinck_multec_werkstuk2UITests;
+			productReference = 03235F99209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03235F6F209706F8000EEB7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Robin Vinck";
+				TargetAttributes = {
+					03235F76209706F8000EEB7E = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					03235F8D209706FA000EEB7E = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 03235F76209706F8000EEB7E;
+					};
+					03235F98209706FA000EEB7E = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 03235F76209706F8000EEB7E;
+					};
+				};
+			};
+			buildConfigurationList = 03235F72209706F8000EEB7E /* Build configuration list for PBXProject "Robin_Vinck_multec_werkstuk2" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03235F6E209706F8000EEB7E;
+			productRefGroup = 03235F78209706F8000EEB7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03235F76209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2 */,
+				03235F8D209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests */,
+				03235F98209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03235F75209706F8000EEB7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03235F88209706FA000EEB7E /* LaunchScreen.storyboard in Resources */,
+				03235F85209706FA000EEB7E /* Assets.xcassets in Resources */,
+				03235F80209706F8000EEB7E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03235F8C209706FA000EEB7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03235F97209706FA000EEB7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03235F73209706F8000EEB7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03235F83209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.xcdatamodeld in Sources */,
+				03235F7D209706F8000EEB7E /* ViewController.swift in Sources */,
+				03235F7B209706F8000EEB7E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03235F8A209706FA000EEB7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03235F93209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03235F95209706FA000EEB7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03235F9E209706FA000EEB7E /* Robin_Vinck_multec_werkstuk2UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03235F90209706FA000EEB7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03235F76209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2 */;
+			targetProxy = 03235F8F209706FA000EEB7E /* PBXContainerItemProxy */;
+		};
+		03235F9B209706FA000EEB7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03235F76209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2 */;
+			targetProxy = 03235F9A209706FA000EEB7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		03235F7E209706F8000EEB7E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03235F7F209706F8000EEB7E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		03235F86209706FA000EEB7E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03235F87209706FA000EEB7E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		03235FA0209706FA000EEB7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		03235FA1209706FA000EEB7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		03235FA3209706FA000EEB7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56M8PK6W59;
+				INFOPLIST_FILE = Robin_Vinck_multec_werkstuk2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robin.Robin-Vinck-multec-werkstuk2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03235FA4209706FA000EEB7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56M8PK6W59;
+				INFOPLIST_FILE = Robin_Vinck_multec_werkstuk2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robin.Robin-Vinck-multec-werkstuk2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		03235FA6209706FA000EEB7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56M8PK6W59;
+				INFOPLIST_FILE = Robin_Vinck_multec_werkstuk2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robin.Robin-Vinck-multec-werkstuk2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Robin_Vinck_multec_werkstuk2.app/Robin_Vinck_multec_werkstuk2";
+			};
+			name = Debug;
+		};
+		03235FA7209706FA000EEB7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56M8PK6W59;
+				INFOPLIST_FILE = Robin_Vinck_multec_werkstuk2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robin.Robin-Vinck-multec-werkstuk2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Robin_Vinck_multec_werkstuk2.app/Robin_Vinck_multec_werkstuk2";
+			};
+			name = Release;
+		};
+		03235FA9209706FA000EEB7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56M8PK6W59;
+				INFOPLIST_FILE = Robin_Vinck_multec_werkstuk2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robin.Robin-Vinck-multec-werkstuk2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Robin_Vinck_multec_werkstuk2;
+			};
+			name = Debug;
+		};
+		03235FAA209706FA000EEB7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56M8PK6W59;
+				INFOPLIST_FILE = Robin_Vinck_multec_werkstuk2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robin.Robin-Vinck-multec-werkstuk2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Robin_Vinck_multec_werkstuk2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03235F72209706F8000EEB7E /* Build configuration list for PBXProject "Robin_Vinck_multec_werkstuk2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03235FA0209706FA000EEB7E /* Debug */,
+				03235FA1209706FA000EEB7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03235FA2209706FA000EEB7E /* Build configuration list for PBXNativeTarget "Robin_Vinck_multec_werkstuk2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03235FA3209706FA000EEB7E /* Debug */,
+				03235FA4209706FA000EEB7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03235FA5209706FA000EEB7E /* Build configuration list for PBXNativeTarget "Robin_Vinck_multec_werkstuk2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03235FA6209706FA000EEB7E /* Debug */,
+				03235FA7209706FA000EEB7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03235FA8209706FA000EEB7E /* Build configuration list for PBXNativeTarget "Robin_Vinck_multec_werkstuk2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03235FA9209706FA000EEB7E /* Debug */,
+				03235FAA209706FA000EEB7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		03235F81209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				03235F82209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.xcdatamodel */,
+			);
+			currentVersion = 03235F82209706F8000EEB7E /* Robin_Vinck_multec_werkstuk2.xcdatamodel */;
+			path = Robin_Vinck_multec_werkstuk2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 03235F6F209706F8000EEB7E /* Project object */;
+}
