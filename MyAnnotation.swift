@@ -11,11 +11,13 @@ class MyAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
+    var number: Int64?
     
-    init(coordinate: CLLocationCoordinate2D, title:String?, subtitle:String?){
+    init(coordinate: CLLocationCoordinate2D, title:String?, subtitle:String?, number:Int64?){
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
+        self.number = number
     }
     
 }

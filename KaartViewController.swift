@@ -44,7 +44,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
                 
                 
                 
-                let pin = MyAnnotation(coordinate: location, title: villoElement.name, subtitle: villoElement.address)
+                let pin = MyAnnotation(coordinate: location, title: villoElement.name, subtitle: villoElement.address, number: villoElement.number)
                 myMapView.addAnnotation(pin)
             }
             
@@ -79,7 +79,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             return nil
         }
         
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "tajPin")
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
         annotationView.image = UIImage(named: "position")
         annotationView.canShowCallout = true
         let callOutButton = UIButton(type: .detailDisclosure)
@@ -92,7 +92,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         if control == view.rightCalloutAccessoryView {
             print("button tapped")
             if let annotation = view.annotation as? MyAnnotation {
-                            self.performSegue(withIdentifier: "test", sender: annotation.title)
+                            self.performSegue(withIdentifier: "test", sender: annotation.number)
             }
             
             
@@ -105,7 +105,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "test"{
             var vc = segue.destination as! DetailViewController
-            vc.temp = sender as! String
+            vc.temp = sender as! Int64
             //Data has to be a variable name in your RandomViewController
         }
     }
