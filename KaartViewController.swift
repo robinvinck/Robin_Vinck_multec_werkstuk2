@@ -40,7 +40,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
                
                 
                 
-                let myAnnotation = MyAnnotation(coordinate: location, title: villoElement.name)
+                let myAnnotation = MyAnnotation(coordinate: location, title: villoElement.name, message: villoElement.address)
                 self.myMapView.addAnnotation(myAnnotation)
             }
             
@@ -67,11 +67,21 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         mapView.setRegion(region, animated: true)
     }
     
+    
+   // bron: //https://stackoverflow.com/questions/39206418/how-can-i-detect-which-annotation-was-selected-in-mapview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("Annotation selected")
         
         if let annotation = view.annotation as? MyAnnotation {
-            print(annotation.title!);
+            //print(annotation.title!);
+            let ac = UIAlertController(title: annotation.title!, message: annotation.message, preferredStyle: .alert)
+            //ac.addAction(UIAlertAction(title: "OK", style: .default))
+            let gaVerder = UIAlertAction(title: "OK", style: .default, handler: { action in self.performSegue(withIdentifier: "test", sender: self)})
+            ac.addAction(gaVerder)
+            ac.addAction(UIAlertAction(title: "Ga terug", style: .cancel))
+            present(ac, animated: true)
+            
         }
     }
     

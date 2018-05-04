@@ -40,13 +40,7 @@ class Startscherm: UIViewController {
                 return
             }
             
-           // print(responseData);
-            
           
-          let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-          privateMOC.parent = self.managedContext
-          
-          privateMOC.perform {
             do {
                 
                 guard let villoData = try? JSONSerialization.jsonObject(with: responseData, options: []) as? [AnyObject] else {
@@ -54,82 +48,55 @@ class Startscherm: UIViewController {
                     return
                 }
 
-               //var villoDataLengte:int = villoData?.count
+     
                
               
                for villoElement in villoData! {
                     
                     let villoStation = NSEntityDescription.insertNewObject(forEntityName: "Station", into: self.managedContext!) as! Station
                     
-                    print(villoStation)
-                    var element = villoElement as? [String: AnyObject]
+                   //print(villoStation)
+                    var element = villoElement as! [String: AnyObject]
                     
-                    villoStation.number = element!["number"]! as! Int16
-                    print(element!["number"]!)
+               villoStation.number = element["number"]! as! Int64
+                    //print(element["number"]!)
                     
-                    villoStation.name = element!["name"]! as? String
-                    print(element!["name"]!)
-                    villoStation.address = element!["address"]! as? String
-                    print(element!["address"]!)
+                   villoStation.name = element["name"]! as! String
+                    //print(element["name"])
+                    villoStation.address = element["address"] as! String
+                    //print(element["address"])
                     
                     //enter position
-                    let positie = element!["position"] as? [String: AnyObject]
+                    let positie = element["position"] as? [String: AnyObject]
                     let lat = positie!["lat"]!
-                    print(positie!["lat"]!)
+                    //print(positie!["lat"]!)
                     let lng = positie!["lng"]!
-                    print(positie!["lng"]!)
+                    //print(positie!["lng"]!)
                     
                     villoStation.longtitude = lng as! Double
                     
                     villoStation.lattitude = lat as! Double
                     
-                    villoStation.bike_stands = element!["bike_stands"]! as! Int16
-                    print(element!["bike_stands"]!)
-                    villoStation.available_bike_stands = element!["available_bike_stands"]! as! Int16
-                    print(element!["available_bike_stands"]!)
-                    villoStation.available_bikes = element!["available_bikes"]! as! Int16
-                     print(element!["available_bikes"]!)
-               
-                    
-                    do {
-                         try self.managedContext?.save()
-                    }
-                    catch{fatalError("Failure tosave context: \(error)")}
-                    
-                    
-//               for(index, villoElement) in (villoData?.enumerated())!{
-//                    //print("\(index): \(villoElement)")
-//                    let eersteElementArray = villoElement as? [String: AnyObject]
-//                    let positie = eersteElementArray!["position"] as? [String: AnyObject]
-//                    let lat = positie!["lat"]
-//                    print(positie)
-//                    print(lat)
-//               }
+                    villoStation.bike_stands = element["bike_stands"]! as! Int64
+                    //print(element["bike_stands"] as! Int64)
+                    villoStation.available_bike_stands = element["available_bike_stands"]! as! Int64
+                    //print(element["available_bike_stands"] as! Int16)
+                    villoStation.available_bikes = element["available_bikes"] as! Int64
+                    //print(element["available_bikes"] as! Int16)
+          
                }
                 
                 DispatchQueue.main.async {
-                    
-                    
-                         
-//                         let elementFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Station")
-//
-//                         do{
-//                              element = try managedContext.fetch(elementFetch) as! [Station]
-//                              print(element![0].name!)
-//
-//                         } catch {
-//                              fatalError("Failedtofetchemployees: \(error)")
-//
-//                         }
                          
                     }
+               try self.managedContext?.save()
                 }
                 
             
             catch {
                 
             }
-          }
+          
         
         }
     
