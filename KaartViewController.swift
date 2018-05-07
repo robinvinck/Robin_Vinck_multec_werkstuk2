@@ -13,12 +13,17 @@ import CoreData
 
 
 class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-    
+    var managedContext:NSManagedObjectContext?
     var opgehaaldeStations:[Station] = []
+    let preferredLanguage = NSLocale.preferredLanguages[0]
+    
+    @IBOutlet weak var refreshdate: UILabel!
+    
+    
     @IBAction func refreshButton(_ sender: UIBarButtonItem) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-         let managedContext = appDelegate.persistentContainer.viewContext
-  
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
         DispatchQueue.global(qos: .background).async {
             
             
@@ -35,30 +40,56 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             DispatchQueue.main.async {
                 let allAnnotations = self.myMapView.annotations
                 self.myMapView.removeAnnotations(allAnnotations)
-                
+                //self.loadMap()
+                self.loadData()
+                self.refreshdate.text = self.giveDate()
                 
             }
             
         }
     }
     
+    func giveDate() -> String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy' - 'HH:mm:ss"
+        return formatter.string(from: date)
+    }
     
     
     var locationManager = CLLocationManager()
     @IBOutlet weak var myMapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let preferredLanguage = NSLocale.preferredLanguages[0]
-        print(preferredLanguage)
+    
         
         self.myMapView.delegate = self
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            
+            print("not first launch")
+            
+        } else {
+            print("first launch")
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            loadData()
+            self.refreshdate.text = self.giveDate()
+            //loadMap()
+        }
         
         
         locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled(){
             locationManager.startUpdatingLocation()
         }
+        
+       
+        
+        // Do any additional setup after loading the view.
+    }
     
+    func loadMap(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
         let stationFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Station")
@@ -69,7 +100,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
                 let location = CLLocationCoordinate2D(latitude: villoElement.lattitude, longitude: villoElement.longtitude)
                 
                 let fileArray = makeSnippet(elementName: villoElement.name!, separator: "/")
-    
+                print("ok")
                 if preferredLanguage.contains("en") {
                     print("this is English")
                     let fileArray2 = makeSnippet(elementName: fileArray.first!, separator: "-")
@@ -87,8 +118,6 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             fatalError("Failedtofetchemployees: \(error)")
             
         }
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -147,42 +176,130 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         }
     }
     
-    
-    // bron: //https://stackoverflow.com/questions/39206418/how-can-i-detect-which-annotation-was-selected-in-mapview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-    
-    //    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    //        print("Annotation selected")
-    //
-    //        if let annotation = view.annotation as? MyAnnotation {
-    //            //print(annotation.title!);
-    //            let ac = UIAlertController(title: annotation.title!, message: annotation.subtitle, preferredStyle: .alert)
-    //            //ac.addAction(UIAlertAction(title: "OK", style: .default))
-    //            let gaVerder = UIAlertAction(title: "OK", style: .default, handler: { action in self.performSegue(withIdentifier: "test", sender: self)})
-    //            ac.addAction(gaVerder)
-    //            ac.addAction(UIAlertAction(title: "Ga terug", style: .cancel))
-    //            present(ac, animated: true)
-    //
-    //        }
-    //    }
-    
-    //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    //        let capital = view.annotation as! MyAnnotation
-    //        let placeName = capital.title
-    //        //let placeInfo = capital.info
-    //        
-    //        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
-    //        ac.addAction(UIAlertAction(title: "OK", style: .default))
-    //        present(ac, animated: true)
-    //    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    func loadData(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        managedContext = appDelegate.persistentContainer.viewContext
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        let url = URL(string: "https://api.jcdecaux.com/vls/v1/stations?apiKey=6d5071ed0d0b3b68462ad73df43fd9e5479b03d6&contract=Bruxelles-Capitale")
+        let urlRequest = URLRequest(url: url!)
+        let session = URLSession(configuration:
+            URLSessionConfiguration.default)
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            // check for errors
+            guard error == nil else {
+                print("error calling GET")
+                print(error!)
+                return
+            }
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            
+            
+            do {
+                
+                guard let villoData = try? JSONSerialization.jsonObject(with: responseData, options: []) as? [AnyObject] else {
+                    print("failed JSONSerialization")
+                    return
+                }
+                
+                
+                
+                
+                for villoElement in villoData! {
+                    
+                    let villoStation = NSEntityDescription.insertNewObject(forEntityName: "Station", into: self.managedContext!) as! Station
+                    
+                    //print(villoStation)
+                    var element = villoElement as! [String: AnyObject]
+                    
+                    villoStation.number = element["number"]! as! Int64
+                    //print(element["number"]!)
+                    
+                    villoStation.name = (element["name"]! as! String)
+                    //print(element["name"])
+                    villoStation.address = (element["address"] as! String)
+                    //print(element["address"])
+                    villoStation.status = (element["status"] as! String)
+                    //enter position
+                    let positie = element["position"] as? [String: AnyObject]
+                    let lat = positie!["lat"]!
+                    //print(positie!["lat"]!)
+                    let lng = positie!["lng"]!
+                    //print(positie!["lng"]!)
+                    
+                    villoStation.longtitude = lng as! Double
+                    
+                    villoStation.lattitude = lat as! Double
+                    
+                    villoStation.bike_stands = element["bike_stands"]! as! Int64
+                    //print(element["bike_stands"] as! Int64)
+                    villoStation.available_bike_stands = element["available_bike_stands"]! as! Int64
+                    //print(element["available_bike_stands"] as! Int16)
+                    villoStation.available_bikes = element["available_bikes"] as! Int64
+                    //print(element["available_bikes"] as! Int16)
+                    
+                }
+                
+                DispatchQueue.main.async {
+                    self.loadMap()
+                }
+                try self.managedContext?.save()
+            }
+                
+                
+            catch {
+                
+            }
+            
+            
+        }
+        
+        task.resume()
+        
+    }
 }
+
+
+// bron: //https://stackoverflow.com/questions/39206418/how-can-i-detect-which-annotation-was-selected-in-mapview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//        print("Annotation selected")
+//
+//        if let annotation = view.annotation as? MyAnnotation {
+//            //print(annotation.title!);
+//            let ac = UIAlertController(title: annotation.title!, message: annotation.subtitle, preferredStyle: .alert)
+//            //ac.addAction(UIAlertAction(title: "OK", style: .default))
+//            let gaVerder = UIAlertAction(title: "OK", style: .default, handler: { action in self.performSegue(withIdentifier: "test", sender: self)})
+//            ac.addAction(gaVerder)
+//            ac.addAction(UIAlertAction(title: "Ga terug", style: .cancel))
+//            present(ac, animated: true)
+//
+//        }
+//    }
+
+//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//        let capital = view.annotation as! MyAnnotation
+//        let placeName = capital.title
+//        //let placeInfo = capital.info
+//
+//        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+//        ac.addAction(UIAlertAction(title: "OK", style: .default))
+//        present(ac, animated: true)
+//    }
+
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destinationViewController.
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+
