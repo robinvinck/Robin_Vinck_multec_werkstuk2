@@ -20,6 +20,8 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     @IBOutlet weak var myMapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let preferredLanguage = NSLocale.preferredLanguages[0]
+        print(preferredLanguage)
         
         self.myMapView.delegate = self
         
@@ -42,10 +44,23 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             for villoElement in opgehaaldeStations {
                 let location = CLLocationCoordinate2D(latitude: villoElement.lattitude, longitude: villoElement.longtitude)
                 
+                let fileArray = makeSnippet(elementName: villoElement.name!, separator: "/")
                 
+               
                 
-                let pin = MyAnnotation(coordinate: location, title: villoElement.name, subtitle: villoElement.address, number: villoElement.number)
-                myMapView.addAnnotation(pin)
+                if preferredLanguage == "en-US" {
+                    print("this is English")
+                   let fileArray2 = makeSnippet(elementName: fileArray.first!, separator: "-")
+                    let pin = MyAnnotation(coordinate: location, title: fileArray2.last, subtitle: villoElement.address, number: villoElement.number)
+                    myMapView.addAnnotation(pin)
+                   
+                } else if preferredLanguage == "nl-US" {
+                  let pin = MyAnnotation(coordinate: location, title: fileArray.last, subtitle: villoElement.address, number: villoElement.number)
+                    myMapView.addAnnotation(pin)
+                }
+                
+               
+                
             }
             
             
@@ -62,6 +77,12 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         // Dispose of any resources that can be recreated.
     }
     
+    func makeSnippet(elementName:String, separator:String) -> [String]{
+        let snippet = elementName
+        let fileName = snippet
+        let fileArray = fileName.components(separatedBy: separator)
+        return fileArray
+    }
     
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
@@ -71,8 +92,8 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         mapView.setRegion(region, animated: true)
     }
     
-// https://www.youtube.com/watch?v=Tt-cIKKuCGA
-// https://stackoverflow.com/questions/40478120/mkannotationview-swift-adding-info-button?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    // https://www.youtube.com/watch?v=Tt-cIKKuCGA
+    // https://stackoverflow.com/questions/40478120/mkannotationview-swift-adding-info-button?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
@@ -92,11 +113,11 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         if control == view.rightCalloutAccessoryView {
             print("button tapped")
             if let annotation = view.annotation as? MyAnnotation {
-                            self.performSegue(withIdentifier: "test", sender: annotation.number)
+                self.performSegue(withIdentifier: "test", sender: annotation.number)
             }
             
             
-           
+            
         }
     }
     
@@ -104,7 +125,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     //pass param https://stackoverflow.com/questions/35398309/how-to-pass-parameters-when-performing-a-segue-using-performseguewithidentifier?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "test"{
-            var vc = segue.destination as! DetailViewController
+            let vc = segue.destination as! DetailViewController
             vc.temp = sender as! Int64
             //Data has to be a variable name in your RandomViewController
         }
@@ -113,20 +134,20 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     
     // bron: //https://stackoverflow.com/questions/39206418/how-can-i-detect-which-annotation-was-selected-in-mapview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
     
-//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        print("Annotation selected")
-//
-//        if let annotation = view.annotation as? MyAnnotation {
-//            //print(annotation.title!);
-//            let ac = UIAlertController(title: annotation.title!, message: annotation.subtitle, preferredStyle: .alert)
-//            //ac.addAction(UIAlertAction(title: "OK", style: .default))
-//            let gaVerder = UIAlertAction(title: "OK", style: .default, handler: { action in self.performSegue(withIdentifier: "test", sender: self)})
-//            ac.addAction(gaVerder)
-//            ac.addAction(UIAlertAction(title: "Ga terug", style: .cancel))
-//            present(ac, animated: true)
-//
-//        }
-//    }
+    //    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    //        print("Annotation selected")
+    //
+    //        if let annotation = view.annotation as? MyAnnotation {
+    //            //print(annotation.title!);
+    //            let ac = UIAlertController(title: annotation.title!, message: annotation.subtitle, preferredStyle: .alert)
+    //            //ac.addAction(UIAlertAction(title: "OK", style: .default))
+    //            let gaVerder = UIAlertAction(title: "OK", style: .default, handler: { action in self.performSegue(withIdentifier: "test", sender: self)})
+    //            ac.addAction(gaVerder)
+    //            ac.addAction(UIAlertAction(title: "Ga terug", style: .cancel))
+    //            present(ac, animated: true)
+    //
+    //        }
+    //    }
     
     //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     //        let capital = view.annotation as! MyAnnotation

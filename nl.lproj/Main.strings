@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Nin-fX-bxs"; */
+"Nin-fX-bxs.text" = "Title";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "Pk0-qA-U0l"; */
+"Pk0-qA-U0l.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XwA-LP-G3b"; */
+"XwA-LP-G3b.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lTN-tO-aK7"; */
+"lTN-tO-aK7.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Ga door"; ObjectID = "nN9-DK-zQr"; */
+"nN9-DK-zQr.normalTitle" = "Ga door";
+
+/* Class = "UINavigationItem"; title = "Alle plaatsen"; ObjectID = "x4B-KH-vLt"; */
+"x4B-KH-vLt.title" = "Alle plaatsen";

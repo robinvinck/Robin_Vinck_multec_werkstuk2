@@ -73,7 +73,7 @@ class Startscherm: UIViewController {
                               //print(element["name"])
                               villoStation.address = element["address"] as! String
                               //print(element["address"])
-                              
+                              villoStation.status = element["status"] as! String
                               //enter position
                               let positie = element["position"] as? [String: AnyObject]
                               let lat = positie!["lat"]!

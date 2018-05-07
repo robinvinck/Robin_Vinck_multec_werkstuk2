@@ -17,11 +17,15 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var NaamLbl: UILabel!
     var temp:Int64 = 0
     @IBOutlet weak var adresLbl: UILabel!
+    @IBOutlet weak var isOpenLbl: UILabel!
+    @IBOutlet weak var bikeStandsLbl: UILabel!
+    @IBOutlet weak var beschikbaarLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let preferredLanguage = NSLocale.preferredLanguages[0]
+        print(preferredLanguage)
         // Do any additional setup after loading the view.
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -35,17 +39,32 @@ class DetailViewController: UIViewController {
             for villoElement in opgehaaldeStations {
                 
                 if(villoElement.number == temp){
-                    self.NaamLbl.text = villoElement.name
-                    self.adresLbl.text = villoElement.address
                     
-                    let snippet = villoElement.name
-                    let fileName = snippet
-                    let fileArray = fileName?.components(separatedBy: "/")
-                    let test = fileArray!.last
-                    let test2 = fileArray!.first
-                    print(test)
-                    print("test2")
-                    print(test2)
+                    
+                    let fileArray = makeSnippet(elementName: villoElement.name!, separator: "/")
+                    
+                    if preferredLanguage == "en-US" {
+                        print("this is English")
+                        
+                        let fileArray2 = makeSnippet(elementName: fileArray.first!, separator: "-")
+                        
+                        self.NaamLbl.text = fileArray2.last
+                        self.adresLbl.text = villoElement.address
+                        self.isOpenLbl.text = villoElement.status
+                        self.bikeStandsLbl.text = String(villoElement.bike_stands)
+                        self.beschikbaarLbl.text =
+                            String(villoElement.available_bikes)
+                    } else if preferredLanguage == "nl-US" {
+                        self.NaamLbl.text = fileArray.last
+                        self.adresLbl.text = villoElement.address
+                        self.isOpenLbl.text = villoElement.status
+                        print(villoElement.status)
+                        self.isOpenLbl.text = villoElement.status
+                        self.bikeStandsLbl.text = String(villoElement.bike_stands)
+                        self.beschikbaarLbl.text =
+                            String(villoElement.available_bikes)
+                    }
+                    
                 }
                 
             }
@@ -57,6 +76,13 @@ class DetailViewController: UIViewController {
         }
         
         
+    }
+    
+    func makeSnippet(elementName:String, separator:String) -> [String]{
+        let snippet = elementName
+        let fileName = snippet
+        let fileArray = fileName.components(separatedBy: separator)
+        return fileArray
     }
     
     override func didReceiveMemoryWarning() {
