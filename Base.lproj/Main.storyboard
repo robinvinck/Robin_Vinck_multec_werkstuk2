@@ -96,7 +96,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="zce-ig-skV">
                                 <connections>
-                                    <segue destination="y2g-bj-LiZ" kind="show" id="oZn-E9-xfi"/>
+                                    <action selector="refreshButton:" destination="V1N-ec-92N" id="a75-Ek-PXx"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="bookmarks" id="Wed-Yv-XBF">

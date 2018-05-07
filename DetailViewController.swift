@@ -58,7 +58,7 @@ class DetailViewController: UIViewController {
                         self.NaamLbl.text = fileArray.last
                         self.adresLbl.text = villoElement.address
                         self.isOpenLbl.text = villoElement.status
-                        print(villoElement.status)
+                        //print(villoElement.status)
                         self.isOpenLbl.text = villoElement.status
                         self.bikeStandsLbl.text = String(villoElement.bike_stands)
                         self.beschikbaarLbl.text =

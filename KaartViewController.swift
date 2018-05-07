@@ -13,7 +13,35 @@ import CoreData
 
 
 class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    
     var opgehaaldeStations:[Station] = []
+    @IBAction func refreshButton(_ sender: UIBarButtonItem) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+         let managedContext = appDelegate.persistentContainer.viewContext
+  
+        DispatchQueue.global(qos: .background).async {
+            
+            
+            let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Station")
+            let request = NSBatchDeleteRequest(fetchRequest: fetch)
+            do {
+                try managedContext.execute(request)
+                try managedContext.save()
+            } catch {
+                print("code catched testview")
+            }
+            
+            
+            DispatchQueue.main.async {
+                let allAnnotations = self.myMapView.annotations
+                self.myMapView.removeAnnotations(allAnnotations)
+                
+                
+            }
+            
+        }
+    }
+    
     
     
     var locationManager = CLLocationManager()
@@ -30,37 +58,28 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         if CLLocationManager.locationServicesEnabled(){
             locationManager.startUpdatingLocation()
         }
-        
-        
+    
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
-        
         let stationFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Station")
         
         do{
             opgehaaldeStations = try managedContext.fetch(stationFetch) as! [Station]
-            
-            
             for villoElement in opgehaaldeStations {
                 let location = CLLocationCoordinate2D(latitude: villoElement.lattitude, longitude: villoElement.longtitude)
                 
                 let fileArray = makeSnippet(elementName: villoElement.name!, separator: "/")
-                
-               
-                
-                if preferredLanguage == "en-US" {
+    
+                if preferredLanguage.contains("en") {
                     print("this is English")
-                   let fileArray2 = makeSnippet(elementName: fileArray.first!, separator: "-")
+                    let fileArray2 = makeSnippet(elementName: fileArray.first!, separator: "-")
                     let pin = MyAnnotation(coordinate: location, title: fileArray2.last, subtitle: villoElement.address, number: villoElement.number)
                     myMapView.addAnnotation(pin)
-                   
-                } else if preferredLanguage == "nl-US" {
-                  let pin = MyAnnotation(coordinate: location, title: fileArray.last, subtitle: villoElement.address, number: villoElement.number)
+                    
+                } else if preferredLanguage.contains("nl") {
+                    let pin = MyAnnotation(coordinate: location, title: fileArray.last, subtitle: villoElement.address, number: villoElement.number)
                     myMapView.addAnnotation(pin)
                 }
-                
-               
-                
             }
             
             
@@ -115,9 +134,6 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             if let annotation = view.annotation as? MyAnnotation {
                 self.performSegue(withIdentifier: "test", sender: annotation.number)
             }
-            
-            
-            
         }
     }
     
