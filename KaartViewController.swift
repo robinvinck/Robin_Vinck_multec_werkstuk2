@@ -40,7 +40,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             DispatchQueue.main.async {
                 let allAnnotations = self.myMapView.annotations
                 self.myMapView.removeAnnotations(allAnnotations)
-                //self.loadMap()
+               
                 self.loadData()
              
                 
@@ -50,6 +50,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     }
     
     func giveDate() -> String {
+        //geeft datum terug
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy' - 'HH:mm:ss"
@@ -74,8 +75,6 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             print("first launch")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             loadData()
-            
-            //loadMap()
         }
         
         
@@ -86,10 +85,11 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         
        
         
-        // Do any additional setup after loading the view.
+
     }
     
     func loadMap(){
+        //laad specifiek map met annotations
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
         let stationFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Station")
@@ -100,15 +100,19 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
                 let location = CLLocationCoordinate2D(latitude: villoElement.lattitude, longitude: villoElement.longtitude)
                 
                 let fileArray = makeSnippet(elementName: villoElement.name!, separator: "/")
-                print("ok")
+                let adresArray = makeSnippet(elementName: villoElement.address!, separator: "/")
+                //geen eenduidige taal, steeds verschillen in opmaak van adressen.
                 if preferredLanguage.contains("en") {
-                    print("this is English")
+                    
                     let fileArray2 = makeSnippet(elementName: fileArray.first!, separator: "-")
+                   
                     let pin = MyAnnotation(coordinate: location, title: fileArray2.last, subtitle: villoElement.address, number: villoElement.number)
                     myMapView.addAnnotation(pin)
                     
                 } else if preferredLanguage.contains("nl") {
-                    let pin = MyAnnotation(coordinate: location, title: fileArray.last, subtitle: villoElement.address, number: villoElement.number)
+                    //nederlands wordt wel goed gefilterd
+                    let naamArray2 = makeSnippet(elementName: fileArray.last!, separator: "-")
+                    let pin = MyAnnotation(coordinate: location, title: naamArray2.last, subtitle: adresArray.last, number: villoElement.number)
                     myMapView.addAnnotation(pin)
                 }
             }
@@ -214,34 +218,32 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
                     
                     let villoStation = NSEntityDescription.insertNewObject(forEntityName: "Station", into: self.managedContext!) as! Station
                     
-                    //print(villoStation)
                     var element = villoElement as! [String: AnyObject]
                     
                     villoStation.number = element["number"]! as! Int64
-                    //print(element["number"]!)
+
                     
                     villoStation.name = (element["name"]! as! String)
-                    //print(element["name"])
+
                     villoStation.address = (element["address"] as! String)
-                    //print(element["address"])
+   
                     villoStation.status = (element["status"] as! String)
-                    //enter position
+
                     let positie = element["position"] as? [String: AnyObject]
                     let lat = positie!["lat"]!
-                    //print(positie!["lat"]!)
+
                     let lng = positie!["lng"]!
-                    //print(positie!["lng"]!)
+         
                     
                     villoStation.longtitude = lng as! Double
                     
                     villoStation.lattitude = lat as! Double
                     
                     villoStation.bike_stands = element["bike_stands"]! as! Int64
-                    //print(element["bike_stands"] as! Int64)
+
                     villoStation.available_bike_stands = element["available_bike_stands"]! as! Int64
-                    //print(element["available_bike_stands"] as! Int16)
+          
                     villoStation.available_bikes = element["available_bikes"] as! Int64
-                    //print(element["available_bikes"] as! Int16)
                     
                 }
                 

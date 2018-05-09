@@ -69,11 +69,11 @@ class Startscherm: UIViewController {
                               villoStation.number = element["number"]! as! Int64
                               //print(element["number"]!)
                               
-                              villoStation.name = element["name"]! as! String
+                              villoStation.name = (element["name"]! as! String)
                               //print(element["name"])
-                              villoStation.address = element["address"] as! String
+                              villoStation.address = (element["address"] as! String)
                               //print(element["address"])
-                              villoStation.status = element["status"] as! String
+                              villoStation.status = (element["status"] as! String)
                               //enter position
                               let positie = element["position"] as? [String: AnyObject]
                               let lat = positie!["lat"]!

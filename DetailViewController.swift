@@ -45,22 +45,23 @@ class DetailViewController: UIViewController  {
                 if(villoElement.number == temp){
                     
                     
-                    let fileArray = makeSnippet(elementName: villoElement.name!, separator: "/")
+                    let naamArray = makeSnippet(elementName: villoElement.name!, separator: "/")
+                    let adresArray = makeSnippet(elementName: villoElement.address!, separator: "/")
                     
-                    if preferredLanguage == "en-US" {
-                        print("this is English")
-                        
-                        let fileArray2 = makeSnippet(elementName: fileArray.first!, separator: "-")
-                        
-                        self.NaamLbl.text = fileArray2.last
-                        self.adresLbl.text = villoElement.address
+                    //if preferredLanguage.contains("en") bron: Jany Ertveldt
+                    if preferredLanguage.contains("en") {
+                        let naamArray2 = makeSnippet(elementName: naamArray.first!, separator: "-")
+                        self.NaamLbl.text = naamArray2.last
+                        self.adresLbl.text = adresArray.first
                         self.isOpenLbl.text = villoElement.status
                         self.bikeStandsLbl.text = String(villoElement.bike_stands)
                         self.beschikbaarLbl.text =
                             String(villoElement.available_bikes)
-                    } else if preferredLanguage == "nl-US" {
-                        self.NaamLbl.text = fileArray.last
-                        self.adresLbl.text = villoElement.address
+                    } else if preferredLanguage.contains("nl") {
+                        
+                        let naamArray2 = makeSnippet(elementName: naamArray.last!, separator: "-")
+                        self.NaamLbl.text = naamArray2.last
+                        self.adresLbl.text = adresArray.last
                         self.isOpenLbl.text = villoElement.status
                         //print(villoElement.status)
                         self.isOpenLbl.text = villoElement.status

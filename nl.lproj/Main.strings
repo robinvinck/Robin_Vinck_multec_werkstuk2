@@ -16,3 +16,15 @@
 
 /* Class = "UINavigationItem"; title = "Alle plaatsen"; ObjectID = "x4B-KH-vLt"; */
 "x4B-KH-vLt.title" = "Alle plaatsen";
+
+/*INFO*/
+"FV9-9k-SN5.text" = "Informatie";
+
+/*STATUS*/
+"XBp-XD-5xi.text" = "Status";
+
+/*BICYCLE*/
+"47t-YZ-eNO.text" = "Stand in totaal";
+
+/*available*/
+"0zG-Hn-z0C.text" = "beschikbaar";
