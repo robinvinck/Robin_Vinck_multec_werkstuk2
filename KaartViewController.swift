@@ -42,7 +42,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
                 self.myMapView.removeAnnotations(allAnnotations)
                 //self.loadMap()
                 self.loadData()
-                self.refreshdate.text = self.giveDate()
+             
                 
             }
             
@@ -67,14 +67,14 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
-            
+            loadMap()
             print("not first launch")
             
         } else {
             print("first launch")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             loadData()
-            self.refreshdate.text = self.giveDate()
+            
             //loadMap()
         }
         
@@ -93,7 +93,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
         let stationFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Station")
-        
+        self.refreshdate.text = self.giveDate()
         do{
             opgehaaldeStations = try managedContext.fetch(stationFetch) as! [Station]
             for villoElement in opgehaaldeStations {
@@ -149,7 +149,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         }
         
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
-        annotationView.image = UIImage(named: "position")
+        annotationView.image = UIImage(named: "location")
         annotationView.canShowCallout = true
         let callOutButton = UIButton(type: .detailDisclosure)
         annotationView.rightCalloutAccessoryView = callOutButton
@@ -161,7 +161,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         if control == view.rightCalloutAccessoryView {
             print("button tapped")
             if let annotation = view.annotation as? MyAnnotation {
-                self.performSegue(withIdentifier: "test", sender: annotation.number)
+                self.performSegue(withIdentifier: "naarDetailPagina", sender: annotation.number)
             }
         }
     }
@@ -169,7 +169,7 @@ class KaartViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     
     //pass param https://stackoverflow.com/questions/35398309/how-to-pass-parameters-when-performing-a-segue-using-performseguewithidentifier?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "test"{
+        if segue.identifier == "naarDetailPagina"{
             let vc = segue.destination as! DetailViewController
             vc.temp = sender as! Int64
             //Data has to be a variable name in your RandomViewController

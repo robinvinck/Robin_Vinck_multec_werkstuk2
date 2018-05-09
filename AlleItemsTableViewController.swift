@@ -63,6 +63,13 @@ class AlleItemsTableViewController: UITableViewController {
         return cell
     }
     
+    func makeSnippet(elementName:String, separator:String) -> [String]{
+        let snippet = elementName
+        let fileName = snippet
+        let fileArray = fileName.components(separatedBy: separator)
+        return fileArray
+    }
+    
     
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,14 +116,21 @@ class AlleItemsTableViewController: UITableViewController {
      }
      */
     
-    /*
+
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "naarDetail"
+        {
+        print("ok")
+        let vc = segue.destination as! DetailViewController
+        let indexPath = self.tableView.indexPathForSelectedRow
+        vc.temp = opgehaaldeStations[(indexPath?.row)!].number
+        }
      }
-     */
+
     
 }

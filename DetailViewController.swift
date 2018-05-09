@@ -8,10 +8,12 @@
 
 import UIKit
 import CoreData
+import MapKit
+import CoreLocation
 
 
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController  {
     var opgehaaldeStations:[Station] = []
     
     @IBOutlet weak var NaamLbl: UILabel!
@@ -20,6 +22,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var isOpenLbl: UILabel!
     @IBOutlet weak var bikeStandsLbl: UILabel!
     @IBOutlet weak var beschikbaarLbl: UILabel!
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +93,12 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+        
+        
+    
+
     
     
     /*
